@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Form extends Component {
   constructor(props) {
     super(props);
+    this.inputRef = React.createRef();
     /*TODO - set initial state for link name and URL */
     this.state = {
       name: "",
@@ -40,14 +41,11 @@ class Form extends Component {
 
     // console.log(favlink);
     let success = false;
-    if(name !== "" && URL !== "")
-    {
+    if (name !== "" && URL !== "") {
       success = true;
-    let favlink = { name, URL };
-    handleSubmit(favlink);
-    }
-    else
-    {
+      let favlink = { name, URL };
+      handleSubmit(favlink);
+    } else {
       if (name === "" && URL === "") {
         alert("name and URL required!");
       } else if (name === "" && URL !== "") {
@@ -56,13 +54,17 @@ class Form extends Component {
         alert("URL is required!");
       }
     }
-    success && this.setState({
-      name: "",
-      URL: "",
-    });
+    success &&
+      this.setState({
+        name: "",
+        URL: "",
+      });
     // console.log(this.state.name + " " + this.state.URL);
   };
 
+  componentDidMount() {
+    this.inputRef.current.focus();
+  }
   render() {
     return (
       <div>
@@ -74,6 +76,7 @@ class Form extends Component {
             name="name"
             onChange={this.handleChange}
             value={this.state.name}
+            ref={this.inputRef}
           />
           <label>URL</label>
           <input
