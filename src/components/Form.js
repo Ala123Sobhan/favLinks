@@ -55,10 +55,15 @@ class Form extends Component {
       }
     }
     success &&
-      this.setState({
-        name: "",
-        URL: "",
-      });
+      this.setState(
+        {
+          name: "",
+          URL: "",
+        },
+        () => {
+          this.componentDidMount();
+        }
+      );
     // console.log(this.state.name + " " + this.state.URL);
   };
 
