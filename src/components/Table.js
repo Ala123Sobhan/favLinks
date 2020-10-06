@@ -1,15 +1,19 @@
 import React from "react";
 
 const TableHeader = () => {
+  const style = {
+    backgroundColor: "#FFF020",
+    padding: "5px",
+  };
   // boilerplate table header functional component
   return (
     <thead>
       <tr>
-        <th>Name</th>
+        <th style={style}>Name</th>
 
-        <th>URL</th>
+        <th style={style}>URL</th>
 
-        <th>Remove</th>
+        <th style={style}>Remove</th>
       </tr>
     </thead>
   );
