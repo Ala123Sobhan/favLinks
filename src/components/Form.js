@@ -39,11 +39,24 @@ class Form extends Component {
     //console.log(linkName, linkURL);
 
     // console.log(favlink);
-
+    let success = false;
+    if(name !== "" && URL !== "")
+    {
+      success = true;
     let favlink = { name, URL };
     handleSubmit(favlink);
-
-    this.setState({
+    }
+    else
+    {
+      if (name === "" && URL === "") {
+        alert("name and URL required!");
+      } else if (name === "" && URL !== "") {
+        alert("name is required!");
+      } else if (URL === "" && name !== "") {
+        alert("URL is required!");
+      }
+    }
+    success && this.setState({
       name: "",
       URL: "",
     });
